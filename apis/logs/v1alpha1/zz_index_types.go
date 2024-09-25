@@ -96,7 +96,7 @@ type ExclusionFilterInitParameters struct {
 	// A boolean stating if the exclusion is active or not.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// (String) The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	// The name of the exclusion filter.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -110,7 +110,7 @@ type ExclusionFilterObservation struct {
 	// A boolean stating if the exclusion is active or not.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// (String) The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	// The name of the exclusion filter.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -126,7 +126,7 @@ type ExclusionFilterParameters struct {
 	// +kubebuilder:validation:Optional
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// (String) The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	// The name of the exclusion filter.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -180,8 +180,8 @@ type IndexInitParameters struct {
 	// Logs filter
 	Filter []IndexFilterInitParameters `json:"filter,omitempty" tf:"filter,omitempty"`
 
-	// (String) The name of the index.
-	// The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
+	// The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Number) The number of days before logs are deleted from this index.
@@ -218,8 +218,8 @@ type IndexObservation struct {
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (String) The name of the index.
-	// The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
+	// The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Number) The number of days before logs are deleted from this index.
@@ -259,8 +259,8 @@ type IndexParameters struct {
 	// +kubebuilder:validation:Optional
 	Filter []IndexFilterParameters `json:"filter,omitempty" tf:"filter,omitempty"`
 
-	// (String) The name of the index.
-	// The name of the index.
+	// (String) The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
+	// The name of the index. Index names cannot be modified after creation. If this value is changed, a new index will be created.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 

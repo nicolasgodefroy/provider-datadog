@@ -19,22 +19,22 @@ import (
 
 type FilterInitParameters struct {
 
-	// following the span search syntax. Defaults to "*".
-	// The search query - following the span search syntax. Defaults to `"*"`.
+	// follow the span search syntax, use AND between tags and \ to escape special characters, use nanosecond for duration. Defaults to "*".
+	// The search query - follow the span search syntax, use `AND` between tags and `\` to escape special characters, use nanosecond for duration. Defaults to `"*"`.
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 }
 
 type FilterObservation struct {
 
-	// following the span search syntax. Defaults to "*".
-	// The search query - following the span search syntax. Defaults to `"*"`.
+	// follow the span search syntax, use AND between tags and \ to escape special characters, use nanosecond for duration. Defaults to "*".
+	// The search query - follow the span search syntax, use `AND` between tags and `\` to escape special characters, use nanosecond for duration. Defaults to `"*"`.
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 }
 
 type FilterParameters struct {
 
-	// following the span search syntax. Defaults to "*".
-	// The search query - following the span search syntax. Defaults to `"*"`.
+	// follow the span search syntax, use AND between tags and \ to escape special characters, use nanosecond for duration. Defaults to "*".
+	// The search query - follow the span search syntax, use `AND` between tags and `\` to escape special characters, use nanosecond for duration. Defaults to `"*"`.
 	// +kubebuilder:validation:Optional
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 }

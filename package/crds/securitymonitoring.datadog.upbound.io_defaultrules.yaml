@@ -88,6 +88,13 @@ spec:
                           type: string
                       type: object
                     type: array
+                  customTags:
+                    description: (Set of String) Custom tags for generated signals.
+                      Custom tags for generated signals.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   enabled:
                     description: (Boolean) Enable the rule. Defaults to true. Enable
                       the rule. Defaults to `true`.
@@ -168,6 +175,13 @@ spec:
                           type: string
                       type: object
                     type: array
+                  customTags:
+                    description: (Set of String) Custom tags for generated signals.
+                      Custom tags for generated signals.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   enabled:
                     description: (Boolean) Enable the rule. Defaults to true. Enable
                       the rule. Defaults to `true`.
@@ -401,6 +415,13 @@ spec:
                           type: string
                       type: object
                     type: array
+                  customTags:
+                    description: (Set of String) Custom tags for generated signals.
+                      Custom tags for generated signals.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   enabled:
                     description: (Boolean) Enable the rule. Defaults to true. Enable
                       the rule. Defaults to `true`.

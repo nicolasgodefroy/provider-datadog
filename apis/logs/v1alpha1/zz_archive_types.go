@@ -265,7 +265,7 @@ type GcsArchiveParameters struct {
 	// (String) Your project id.
 	// Your project id.
 	// +kubebuilder:validation:Optional
-	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
+	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
 }
 
 type S3ArchiveInitParameters struct {

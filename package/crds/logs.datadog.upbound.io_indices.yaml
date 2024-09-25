@@ -141,8 +141,10 @@ spec:
                             active or not.
                           type: boolean
                         name:
-                          description: (String) The name of the index. The name of
-                            the exclusion filter.
+                          description: (String) The name of the index. Index names
+                            cannot be modified after creation. If this value is changed,
+                            a new index will be created. The name of the exclusion
+                            filter.
                           type: string
                       type: object
                     type: array
@@ -160,7 +162,11 @@ spec:
                       type: object
                     type: array
                   name:
-                    description: (String) The name of the index. The name of the index.
+                    description: (String) The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created. The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created.
                     type: string
                   retentionDays:
                     description: (Number) The number of days before logs are deleted
@@ -253,8 +259,10 @@ spec:
                             active or not.
                           type: boolean
                         name:
-                          description: (String) The name of the index. The name of
-                            the exclusion filter.
+                          description: (String) The name of the index. Index names
+                            cannot be modified after creation. If this value is changed,
+                            a new index will be created. The name of the exclusion
+                            filter.
                           type: string
                       type: object
                     type: array
@@ -272,7 +280,11 @@ spec:
                       type: object
                     type: array
                   name:
-                    description: (String) The name of the index. The name of the index.
+                    description: (String) The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created. The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created.
                     type: string
                   retentionDays:
                     description: (Number) The number of days before logs are deleted
@@ -527,8 +539,10 @@ spec:
                             active or not.
                           type: boolean
                         name:
-                          description: (String) The name of the index. The name of
-                            the exclusion filter.
+                          description: (String) The name of the index. Index names
+                            cannot be modified after creation. If this value is changed,
+                            a new index will be created. The name of the exclusion
+                            filter.
                           type: string
                       type: object
                     type: array
@@ -549,7 +563,11 @@ spec:
                     description: (String) The ID of this resource.
                     type: string
                   name:
-                    description: (String) The name of the index. The name of the index.
+                    description: (String) The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created. The name of the index. Index names cannot
+                      be modified after creation. If this value is changed, a new
+                      index will be created.
                     type: string
                   retentionDays:
                     description: (Number) The number of days before logs are deleted

@@ -189,8 +189,8 @@ type EventQueryInitParameters struct {
 	// The compute options.
 	Compute []ComputeInitParameters `json:"compute,omitempty" tf:"compute,omitempty"`
 
-	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries.
-	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`.
+	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries, network.
+	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`, `network`.
 	DataSource *string `json:"dataSource,omitempty" tf:"data_source,omitempty"`
 
 	// (Block List) Group by options. (see below for nested schema)
@@ -216,8 +216,8 @@ type EventQueryObservation struct {
 	// The compute options.
 	Compute []ComputeObservation `json:"compute,omitempty" tf:"compute,omitempty"`
 
-	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries.
-	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`.
+	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries, network.
+	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`, `network`.
 	DataSource *string `json:"dataSource,omitempty" tf:"data_source,omitempty"`
 
 	// (Block List) Group by options. (see below for nested schema)
@@ -244,8 +244,8 @@ type EventQueryParameters struct {
 	// +kubebuilder:validation:Optional
 	Compute []ComputeParameters `json:"compute" tf:"compute,omitempty"`
 
-	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries.
-	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`.
+	// based queries. Valid values are rum, ci_pipelines, ci_tests, audit, events, logs, spans, database_queries, network.
+	// The data source for event platform-based queries. Valid values are `rum`, `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`, `spans`, `database_queries`, `network`.
 	// +kubebuilder:validation:Optional
 	DataSource *string `json:"dataSource" tf:"data_source,omitempty"`
 
@@ -409,9 +409,9 @@ type MonitorInitParameters struct {
 	// Controls how groups or monitors are treated if an evaluation does not return any data points. The default option results in different behavior depending on the monitor query type. For monitors using `Count` queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions. For monitors using any query type other than `Count`, for example `Gauge`, `Measure`, or `Rate`, the monitor shows the last known status. This option is only available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors. Valid values are: `show_no_data`, `show_and_notify_no_data`, `resolve`, and `default`.
 	OnMissingData *string `json:"onMissingData,omitempty" tf:"on_missing_data,omitempty"`
 
-	// (Number) Integer from 1 (high) to 5 (low) indicating alert severity.
+	// (String) Integer from 1 (high) to 5 (low) indicating alert severity.
 	// Integer from 1 (high) to 5 (low) indicating alert severity.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (String) The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the API Reference for details.
 	// The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the [API Reference](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor) for details.
@@ -441,7 +441,7 @@ type MonitorInitParameters struct {
 	// +listType=set
 	RestrictedRoles []*string `json:"restrictedRoles,omitempty" tf:"restricted_roles,omitempty"`
 
-	// (Block List) Configuration options for scheduling. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for scheduling. (see below for nested schema)
 	// Configuration options for scheduling.
 	SchedulingOptions []SchedulingOptionsInitParameters `json:"schedulingOptions,omitempty" tf:"scheduling_options,omitempty"`
 
@@ -454,8 +454,8 @@ type MonitorInitParameters struct {
 	// The number of hours of the monitor not reporting data before it automatically resolves from a triggered state. The minimum allowed value is 0 hours. The maximum allowed value is 24 hours.
 	TimeoutH *float64 `json:"timeoutH,omitempty" tf:"timeout_h,omitempty"`
 
-	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert.
-	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`.
+	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert, network-performance alert.
+	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`, `network-performance alert`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Boolean) If set to false, skip the validation call done during plan.
@@ -564,9 +564,9 @@ type MonitorObservation struct {
 	// Controls how groups or monitors are treated if an evaluation does not return any data points. The default option results in different behavior depending on the monitor query type. For monitors using `Count` queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions. For monitors using any query type other than `Count`, for example `Gauge`, `Measure`, or `Rate`, the monitor shows the last known status. This option is only available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors. Valid values are: `show_no_data`, `show_and_notify_no_data`, `resolve`, and `default`.
 	OnMissingData *string `json:"onMissingData,omitempty" tf:"on_missing_data,omitempty"`
 
-	// (Number) Integer from 1 (high) to 5 (low) indicating alert severity.
+	// (String) Integer from 1 (high) to 5 (low) indicating alert severity.
 	// Integer from 1 (high) to 5 (low) indicating alert severity.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (String) The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the API Reference for details.
 	// The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the [API Reference](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor) for details.
@@ -596,7 +596,7 @@ type MonitorObservation struct {
 	// +listType=set
 	RestrictedRoles []*string `json:"restrictedRoles,omitempty" tf:"restricted_roles,omitempty"`
 
-	// (Block List) Configuration options for scheduling. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for scheduling. (see below for nested schema)
 	// Configuration options for scheduling.
 	SchedulingOptions []SchedulingOptionsObservation `json:"schedulingOptions,omitempty" tf:"scheduling_options,omitempty"`
 
@@ -609,8 +609,8 @@ type MonitorObservation struct {
 	// The number of hours of the monitor not reporting data before it automatically resolves from a triggered state. The minimum allowed value is 0 hours. The maximum allowed value is 24 hours.
 	TimeoutH *float64 `json:"timeoutH,omitempty" tf:"timeout_h,omitempty"`
 
-	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert.
-	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`.
+	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert, network-performance alert.
+	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`, `network-performance alert`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Boolean) If set to false, skip the validation call done during plan.
@@ -732,10 +732,10 @@ type MonitorParameters struct {
 	// +kubebuilder:validation:Optional
 	OnMissingData *string `json:"onMissingData,omitempty" tf:"on_missing_data,omitempty"`
 
-	// (Number) Integer from 1 (high) to 5 (low) indicating alert severity.
+	// (String) Integer from 1 (high) to 5 (low) indicating alert severity.
 	// Integer from 1 (high) to 5 (low) indicating alert severity.
 	// +kubebuilder:validation:Optional
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (String) The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the API Reference for details.
 	// The monitor query to notify on. Note this is not the same query you see in the UI and the syntax is different depending on the monitor type, please see the [API Reference](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor) for details.
@@ -771,7 +771,7 @@ type MonitorParameters struct {
 	// +listType=set
 	RestrictedRoles []*string `json:"restrictedRoles,omitempty" tf:"restricted_roles,omitempty"`
 
-	// (Block List) Configuration options for scheduling. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for scheduling. (see below for nested schema)
 	// Configuration options for scheduling.
 	// +kubebuilder:validation:Optional
 	SchedulingOptions []SchedulingOptionsParameters `json:"schedulingOptions,omitempty" tf:"scheduling_options,omitempty"`
@@ -787,8 +787,8 @@ type MonitorParameters struct {
 	// +kubebuilder:validation:Optional
 	TimeoutH *float64 `json:"timeoutH,omitempty" tf:"timeout_h,omitempty"`
 
-	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert.
-	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`.
+	// analytics alert, slo alert, event-v2 alert, audit alert, ci-pipelines alert, ci-tests alert, error-tracking alert, database-monitoring alert, network-performance alert.
+	// The type of the monitor. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor). Note: The monitor type cannot be changed after a monitor is created. Valid values are `composite`, `event alert`, `log alert`, `metric alert`, `process alert`, `query alert`, `rum alert`, `service check`, `synthetics alert`, `trace-analytics alert`, `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring alert`, `network-performance alert`.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
@@ -926,34 +926,34 @@ type MonitorThresholdsParameters struct {
 
 type SchedulingOptionsInitParameters struct {
 
-	// (Block List) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
 	// Configuration options for the custom schedules. If `start` is omitted, the monitor creation time will be used.
 	CustomSchedule []CustomScheduleInitParameters `json:"customSchedule,omitempty" tf:"custom_schedule,omitempty"`
 
-	// (Block List) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
 	// Configuration options for the evaluation window. If `hour_starts` is set, no other fields may be set. Otherwise, `day_starts` and `month_starts` must be set together.
 	EvaluationWindow []EvaluationWindowInitParameters `json:"evaluationWindow,omitempty" tf:"evaluation_window,omitempty"`
 }
 
 type SchedulingOptionsObservation struct {
 
-	// (Block List) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
 	// Configuration options for the custom schedules. If `start` is omitted, the monitor creation time will be used.
 	CustomSchedule []CustomScheduleObservation `json:"customSchedule,omitempty" tf:"custom_schedule,omitempty"`
 
-	// (Block List) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
 	// Configuration options for the evaluation window. If `hour_starts` is set, no other fields may be set. Otherwise, `day_starts` and `month_starts` must be set together.
 	EvaluationWindow []EvaluationWindowObservation `json:"evaluationWindow,omitempty" tf:"evaluation_window,omitempty"`
 }
 
 type SchedulingOptionsParameters struct {
 
-	// (Block List) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the custom schedules. If start is omitted, the monitor creation time will be used. (see below for nested schema)
 	// Configuration options for the custom schedules. If `start` is omitted, the monitor creation time will be used.
 	// +kubebuilder:validation:Optional
 	CustomSchedule []CustomScheduleParameters `json:"customSchedule,omitempty" tf:"custom_schedule,omitempty"`
 
-	// (Block List) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
+	// (Block List, Max: 1) Configuration options for the evaluation window. If hour_starts is set, no other fields may be set. Otherwise, day_starts and month_starts must be set together. (see below for nested schema)
 	// Configuration options for the evaluation window. If `hour_starts` is set, no other fields may be set. Otherwise, `day_starts` and `month_starts` must be set together.
 	// +kubebuilder:validation:Optional
 	EvaluationWindow []EvaluationWindowParameters `json:"evaluationWindow,omitempty" tf:"evaluation_window,omitempty"`

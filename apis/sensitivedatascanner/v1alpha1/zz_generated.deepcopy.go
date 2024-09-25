@@ -669,6 +669,11 @@ func (in *RuleInitParameters) DeepCopyInto(out *RuleInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Priority != nil {
+		in, out := &in.Priority, &out.Priority
+		*out = new(float64)
+		**out = **in
+	}
 	if in.StandardPatternID != nil {
 		in, out := &in.StandardPatternID, &out.StandardPatternID
 		*out = new(string)
@@ -798,6 +803,11 @@ func (in *RuleObservation) DeepCopyInto(out *RuleObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Priority != nil {
+		in, out := &in.Priority, &out.Priority
+		*out = new(float64)
+		**out = **in
+	}
 	if in.StandardPatternID != nil {
 		in, out := &in.StandardPatternID, &out.StandardPatternID
 		*out = new(string)
@@ -888,6 +898,11 @@ func (in *RuleParameters) DeepCopyInto(out *RuleParameters) {
 	if in.Pattern != nil {
 		in, out := &in.Pattern, &out.Pattern
 		*out = new(string)
+		**out = **in
+	}
+	if in.Priority != nil {
+		in, out := &in.Priority, &out.Priority
+		*out = new(float64)
 		**out = **in
 	}
 	if in.StandardPatternID != nil {

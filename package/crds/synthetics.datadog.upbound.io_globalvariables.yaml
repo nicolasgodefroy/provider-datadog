@@ -133,8 +133,9 @@ spec:
                               type:
                                 description: (String) Defines the source to use to
                                   extract the value. Valid values are http_body, http_header,
-                                  local_variable. Type of parser to extract the value.
-                                  Valid values are `raw`, `json_path`, `regex`, `x_path`.
+                                  http_status_code, local_variable. Type of parser
+                                  to extract the value. Valid values are `raw`, `json_path`,
+                                  `regex`, `x_path`.
                                 type: string
                               value:
                                 description: (String, Sensitive) The value of the
@@ -145,9 +146,10 @@ spec:
                           type: array
                         type:
                           description: (String) Defines the source to use to extract
-                            the value. Valid values are http_body, http_header, local_variable.
-                            Defines the source to use to extract the value. Valid
-                            values are `http_body`, `http_header`, `local_variable`.
+                            the value. Valid values are http_body, http_header, http_status_code,
+                            local_variable. Defines the source to use to extract the
+                            value. Valid values are `http_body`, `http_header`, `http_status_code`,
+                            `local_variable`.
                           type: string
                       type: object
                     type: array
@@ -267,8 +269,9 @@ spec:
                               type:
                                 description: (String) Defines the source to use to
                                   extract the value. Valid values are http_body, http_header,
-                                  local_variable. Type of parser to extract the value.
-                                  Valid values are `raw`, `json_path`, `regex`, `x_path`.
+                                  http_status_code, local_variable. Type of parser
+                                  to extract the value. Valid values are `raw`, `json_path`,
+                                  `regex`, `x_path`.
                                 type: string
                               value:
                                 description: (String, Sensitive) The value of the
@@ -279,9 +282,10 @@ spec:
                           type: array
                         type:
                           description: (String) Defines the source to use to extract
-                            the value. Valid values are http_body, http_header, local_variable.
-                            Defines the source to use to extract the value. Valid
-                            values are `http_body`, `http_header`, `local_variable`.
+                            the value. Valid values are http_body, http_header, http_status_code,
+                            local_variable. Defines the source to use to extract the
+                            value. Valid values are `http_body`, `http_header`, `http_status_code`,
+                            `local_variable`.
                           type: string
                       type: object
                     type: array
@@ -547,8 +551,9 @@ spec:
                               type:
                                 description: (String) Defines the source to use to
                                   extract the value. Valid values are http_body, http_header,
-                                  local_variable. Type of parser to extract the value.
-                                  Valid values are `raw`, `json_path`, `regex`, `x_path`.
+                                  http_status_code, local_variable. Type of parser
+                                  to extract the value. Valid values are `raw`, `json_path`,
+                                  `regex`, `x_path`.
                                 type: string
                               value:
                                 description: (String, Sensitive) The value of the
@@ -559,9 +564,10 @@ spec:
                           type: array
                         type:
                           description: (String) Defines the source to use to extract
-                            the value. Valid values are http_body, http_header, local_variable.
-                            Defines the source to use to extract the value. Valid
-                            values are `http_body`, `http_header`, `local_variable`.
+                            the value. Valid values are http_body, http_header, http_status_code,
+                            local_variable. Defines the source to use to extract the
+                            value. Valid values are `http_body`, `http_header`, `http_status_code`,
+                            `local_variable`.
                           type: string
                       type: object
                     type: array

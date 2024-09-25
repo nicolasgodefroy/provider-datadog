@@ -389,8 +389,8 @@ type RuleInitParameters struct {
 	// Whether the rule is enabled. Defaults to `true`.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
-	// (Block List) Additional queries to filter matched events before they are processed. (see below for nested schema)
-	// Additional queries to filter matched events before they are processed.
+	// (Block List) Additional queries to filter matched events before they are processed. Note: This field is deprecated for log detection, signal correlation, and workload security rules. (see below for nested schema)
+	// Additional queries to filter matched events before they are processed. **Note**: This field is deprecated for log detection, signal correlation, and workload security rules.
 	Filter []RuleFilterInitParameters `json:"filter,omitempty" tf:"filter,omitempty"`
 
 	// by values in their title. Defaults to false.
@@ -429,6 +429,10 @@ type RuleInitParameters struct {
 	// (String) The rule type. Valid values are application_security, log_detection, workload_security, signal_correlation. Defaults to "log_detection".
 	// The rule type. Valid values are `application_security`, `log_detection`, `workload_security`, `signal_correlation`. Defaults to `"log_detection"`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Boolean) Whether or not to validate the Rule.
+	// Whether or not to validate the Rule.
+	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 }
 
 type RuleObservation struct {
@@ -441,8 +445,8 @@ type RuleObservation struct {
 	// Whether the rule is enabled. Defaults to `true`.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
-	// (Block List) Additional queries to filter matched events before they are processed. (see below for nested schema)
-	// Additional queries to filter matched events before they are processed.
+	// (Block List) Additional queries to filter matched events before they are processed. Note: This field is deprecated for log detection, signal correlation, and workload security rules. (see below for nested schema)
+	// Additional queries to filter matched events before they are processed. **Note**: This field is deprecated for log detection, signal correlation, and workload security rules.
 	Filter []RuleFilterObservation `json:"filter,omitempty" tf:"filter,omitempty"`
 
 	// by values in their title. Defaults to false.
@@ -484,6 +488,10 @@ type RuleObservation struct {
 	// (String) The rule type. Valid values are application_security, log_detection, workload_security, signal_correlation. Defaults to "log_detection".
 	// The rule type. Valid values are `application_security`, `log_detection`, `workload_security`, `signal_correlation`. Defaults to `"log_detection"`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Boolean) Whether or not to validate the Rule.
+	// Whether or not to validate the Rule.
+	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 }
 
 type RuleOptionsInitParameters struct {
@@ -492,8 +500,8 @@ type RuleOptionsInitParameters struct {
 	// If true, signals in non-production environments have a lower severity than what is defined by the rule case, which can reduce noise. The decrement is applied when the environment tag of the signal starts with `staging`, `test`, or `dev`. Only available when the rule type is `log_detection`. Defaults to `false`.
 	DecreaseCriticalityBasedOnEnv *bool `json:"decreaseCriticalityBasedOnEnv,omitempty" tf:"decrease_criticality_based_on_env,omitempty"`
 
-	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party. Defaults to "threshold".
-	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`. Defaults to `"threshold"`.
+	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party, anomaly_threshold. Defaults to "threshold".
+	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`, `anomaly_threshold`. Defaults to `"threshold"`.
 	DetectionMethod *string `json:"detectionMethod,omitempty" tf:"detection_method,omitempty"`
 
 	// (Number) A time window is specified to match when at least one of the cases matches true. This is a sliding window and evaluates in real time. Valid values are 0, 60, 300, 600, 900, 1800, 3600, 7200.
@@ -527,8 +535,8 @@ type RuleOptionsObservation struct {
 	// If true, signals in non-production environments have a lower severity than what is defined by the rule case, which can reduce noise. The decrement is applied when the environment tag of the signal starts with `staging`, `test`, or `dev`. Only available when the rule type is `log_detection`. Defaults to `false`.
 	DecreaseCriticalityBasedOnEnv *bool `json:"decreaseCriticalityBasedOnEnv,omitempty" tf:"decrease_criticality_based_on_env,omitempty"`
 
-	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party. Defaults to "threshold".
-	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`. Defaults to `"threshold"`.
+	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party, anomaly_threshold. Defaults to "threshold".
+	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`, `anomaly_threshold`. Defaults to `"threshold"`.
 	DetectionMethod *string `json:"detectionMethod,omitempty" tf:"detection_method,omitempty"`
 
 	// (Number) A time window is specified to match when at least one of the cases matches true. This is a sliding window and evaluates in real time. Valid values are 0, 60, 300, 600, 900, 1800, 3600, 7200.
@@ -563,8 +571,8 @@ type RuleOptionsParameters struct {
 	// +kubebuilder:validation:Optional
 	DecreaseCriticalityBasedOnEnv *bool `json:"decreaseCriticalityBasedOnEnv,omitempty" tf:"decrease_criticality_based_on_env,omitempty"`
 
-	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party. Defaults to "threshold".
-	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`. Defaults to `"threshold"`.
+	// (String) The detection method. Valid values are threshold, new_value, anomaly_detection, impossible_travel, hardcoded, third_party, anomaly_threshold. Defaults to "threshold".
+	// The detection method. Valid values are `threshold`, `new_value`, `anomaly_detection`, `impossible_travel`, `hardcoded`, `third_party`, `anomaly_threshold`. Defaults to `"threshold"`.
 	// +kubebuilder:validation:Optional
 	DetectionMethod *string `json:"detectionMethod,omitempty" tf:"detection_method,omitempty"`
 
@@ -611,8 +619,8 @@ type RuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
-	// (Block List) Additional queries to filter matched events before they are processed. (see below for nested schema)
-	// Additional queries to filter matched events before they are processed.
+	// (Block List) Additional queries to filter matched events before they are processed. Note: This field is deprecated for log detection, signal correlation, and workload security rules. (see below for nested schema)
+	// Additional queries to filter matched events before they are processed. **Note**: This field is deprecated for log detection, signal correlation, and workload security rules.
 	// +kubebuilder:validation:Optional
 	Filter []RuleFilterParameters `json:"filter,omitempty" tf:"filter,omitempty"`
 
@@ -661,6 +669,11 @@ type RuleParameters struct {
 	// The rule type. Valid values are `application_security`, `log_detection`, `workload_security`, `signal_correlation`. Defaults to `"log_detection"`.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Boolean) Whether or not to validate the Rule.
+	// Whether or not to validate the Rule.
+	// +kubebuilder:validation:Optional
+	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 }
 
 type SignalQueryInitParameters struct {

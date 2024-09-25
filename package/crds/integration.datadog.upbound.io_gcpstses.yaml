@@ -68,6 +68,14 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  accountTags:
+                    description: (Set of String) Tags to be associated with GCP metrics
+                      and service checks from your account. Tags to be associated
+                      with GCP metrics and service checks from your account.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   automute:
                     description: (Boolean) Silence monitors for expected GCE instance
                       shutdowns. Silence monitors for expected GCE instance shutdowns.
@@ -83,12 +91,25 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   isCspmEnabled:
-                    description: (Boolean) When enabled, Datadog performs configuration
-                      checks across your Google Cloud environment by continuously
-                      scanning every resource, which may incur additional charges.
-                      When enabled, Datadog performs configuration checks across your
-                      Google Cloud environment by continuously scanning every resource,
-                      which may incur additional charges.
+                    description: (Boolean) Whether Datadog collects cloud security
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Whether
+                      Datadog collects cloud security posture management resources
+                      from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled.
+                    type: boolean
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
                     type: boolean
                 type: object
               initProvider:
@@ -103,6 +124,14 @@ spec:
                   for example because of an external controller is managing them,
                   like an autoscaler.
                 properties:
+                  accountTags:
+                    description: (Set of String) Tags to be associated with GCP metrics
+                      and service checks from your account. Tags to be associated
+                      with GCP metrics and service checks from your account.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   automute:
                     description: (Boolean) Silence monitors for expected GCE instance
                       shutdowns. Silence monitors for expected GCE instance shutdowns.
@@ -118,12 +147,25 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   isCspmEnabled:
-                    description: (Boolean) When enabled, Datadog performs configuration
-                      checks across your Google Cloud environment by continuously
-                      scanning every resource, which may incur additional charges.
-                      When enabled, Datadog performs configuration checks across your
-                      Google Cloud environment by continuously scanning every resource,
-                      which may incur additional charges.
+                    description: (Boolean) Whether Datadog collects cloud security
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Whether
+                      Datadog collects cloud security posture management resources
+                      from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled.
+                    type: boolean
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
                     type: boolean
                 type: object
               managementPolicies:
@@ -296,6 +338,14 @@ spec:
             properties:
               atProvider:
                 properties:
+                  accountTags:
+                    description: (Set of String) Tags to be associated with GCP metrics
+                      and service checks from your account. Tags to be associated
+                      with GCP metrics and service checks from your account.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   automute:
                     description: (Boolean) Silence monitors for expected GCE instance
                       shutdowns. Silence monitors for expected GCE instance shutdowns.
@@ -318,12 +368,25 @@ spec:
                     description: (String) The ID of this resource.
                     type: string
                   isCspmEnabled:
-                    description: (Boolean) When enabled, Datadog performs configuration
-                      checks across your Google Cloud environment by continuously
-                      scanning every resource, which may incur additional charges.
-                      When enabled, Datadog performs configuration checks across your
-                      Google Cloud environment by continuously scanning every resource,
-                      which may incur additional charges.
+                    description: (Boolean) Whether Datadog collects cloud security
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Whether
+                      Datadog collects cloud security posture management resources
+                      from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled.
+                    type: boolean
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
                     type: boolean
                 type: object
               conditions:

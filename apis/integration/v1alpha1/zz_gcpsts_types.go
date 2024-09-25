@@ -19,6 +19,11 @@ import (
 
 type GCPSTSInitParameters struct {
 
+	// (Set of String) Tags to be associated with GCP metrics and service checks from your account.
+	// Tags to be associated with GCP metrics and service checks from your account.
+	// +listType=set
+	AccountTags []*string `json:"accountTags,omitempty" tf:"account_tags,omitempty"`
+
 	// (Boolean) Silence monitors for expected GCE instance shutdowns.
 	// Silence monitors for expected GCE instance shutdowns.
 	Automute *bool `json:"automute,omitempty" tf:"automute,omitempty"`
@@ -32,12 +37,25 @@ type GCPSTSInitParameters struct {
 	// +listType=set
 	HostFilters []*string `json:"hostFilters,omitempty" tf:"host_filters,omitempty"`
 
-	// (Boolean) When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
-	// When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled.
 	IsCspmEnabled *bool `json:"isCspmEnabled,omitempty" tf:"is_cspm_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 type GCPSTSObservation struct {
+
+	// (Set of String) Tags to be associated with GCP metrics and service checks from your account.
+	// Tags to be associated with GCP metrics and service checks from your account.
+	// +listType=set
+	AccountTags []*string `json:"accountTags,omitempty" tf:"account_tags,omitempty"`
 
 	// (Boolean) Silence monitors for expected GCE instance shutdowns.
 	// Silence monitors for expected GCE instance shutdowns.
@@ -59,12 +77,26 @@ type GCPSTSObservation struct {
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (Boolean) When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
-	// When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled.
 	IsCspmEnabled *bool `json:"isCspmEnabled,omitempty" tf:"is_cspm_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 type GCPSTSParameters struct {
+
+	// (Set of String) Tags to be associated with GCP metrics and service checks from your account.
+	// Tags to be associated with GCP metrics and service checks from your account.
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	AccountTags []*string `json:"accountTags,omitempty" tf:"account_tags,omitempty"`
 
 	// (Boolean) Silence monitors for expected GCE instance shutdowns.
 	// Silence monitors for expected GCE instance shutdowns.
@@ -82,10 +114,20 @@ type GCPSTSParameters struct {
 	// +listType=set
 	HostFilters []*string `json:"hostFilters,omitempty" tf:"host_filters,omitempty"`
 
-	// (Boolean) When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
-	// When enabled, Datadog performs configuration checks across your Google Cloud environment by continuously scanning every resource, which may incur additional charges.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled.
 	// +kubebuilder:validation:Optional
 	IsCspmEnabled *bool `json:"isCspmEnabled,omitempty" tf:"is_cspm_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	// +kubebuilder:validation:Optional
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	// +kubebuilder:validation:Optional
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 // GCPSTSSpec defines the desired state of GCPSTS

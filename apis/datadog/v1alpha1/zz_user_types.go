@@ -31,8 +31,8 @@ type UserInitParameters_2 struct {
 	// Name for user.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Set of String) A list a role IDs to assign to the user.
-	// A list a role IDs to assign to the user.
+	// (Set of String) A list of role IDs to assign to the user.
+	// A list of role IDs to assign to the user.
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
@@ -58,8 +58,8 @@ type UserObservation_2 struct {
 	// Name for user.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Set of String) A list a role IDs to assign to the user.
-	// A list a role IDs to assign to the user.
+	// (Set of String) A list of role IDs to assign to the user.
+	// A list of role IDs to assign to the user.
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`
 
@@ -93,8 +93,8 @@ type UserParameters_2 struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Set of String) A list a role IDs to assign to the user.
-	// A list a role IDs to assign to the user.
+	// (Set of String) A list of role IDs to assign to the user.
+	// A list of role IDs to assign to the user.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	Roles []*string `json:"roles,omitempty" tf:"roles,omitempty"`

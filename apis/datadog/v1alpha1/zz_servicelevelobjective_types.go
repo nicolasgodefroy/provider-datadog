@@ -197,8 +197,8 @@ type ServiceLevelObjectiveInitParameters struct {
 	// The type of the service level objective. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/service-level-objectives/#create-a-slo-object). Valid values are `metric`, `monitor`, `time_slice`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// (Boolean) Whether or not to validate the SLO.
-	// Whether or not to validate the SLO.
+	// (Boolean) Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
+	// Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
 	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 
 	// (Number) The objective's warning value in (0,100). This must be greater than the target value and match the corresponding thresholds of the primary time frame.
@@ -262,8 +262,8 @@ type ServiceLevelObjectiveObservation struct {
 	// The type of the service level objective. The mapping from these types to the types found in the Datadog Web UI can be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/service-level-objectives/#create-a-slo-object). Valid values are `metric`, `monitor`, `time_slice`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// (Boolean) Whether or not to validate the SLO.
-	// Whether or not to validate the SLO.
+	// (Boolean) Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
+	// Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
 	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 
 	// (Number) The objective's warning value in (0,100). This must be greater than the target value and match the corresponding thresholds of the primary time frame.
@@ -336,8 +336,8 @@ type ServiceLevelObjectiveParameters struct {
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// (Boolean) Whether or not to validate the SLO.
-	// Whether or not to validate the SLO.
+	// (Boolean) Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
+	// Whether or not to validate the SLO. It checks if monitors added to a monitor SLO already exist.
 	// +kubebuilder:validation:Optional
 	Validate *bool `json:"validate,omitempty" tf:"validate,omitempty"`
 
@@ -349,22 +349,22 @@ type ServiceLevelObjectiveParameters struct {
 
 type SliSpecificationInitParameters struct {
 
-	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. (see below for nested schema)
-	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold.
+	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided. (see below for nested schema)
+	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided.
 	TimeSlice []TimeSliceInitParameters `json:"timeSlice,omitempty" tf:"time_slice,omitempty"`
 }
 
 type SliSpecificationObservation struct {
 
-	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. (see below for nested schema)
-	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold.
+	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided. (see below for nested schema)
+	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided.
 	TimeSlice []TimeSliceObservation `json:"timeSlice,omitempty" tf:"time_slice,omitempty"`
 }
 
 type SliSpecificationParameters struct {
 
-	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. (see below for nested schema)
-	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold.
+	// (Block List, Min: 1, Max: 1) The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided. (see below for nested schema)
+	// The time slice condition, composed of 3 parts: 1. The timeseries query, 2. The comparator, and 3. The threshold. Optionally, a fourth part, the query interval, can be provided.
 	// +kubebuilder:validation:Optional
 	TimeSlice []TimeSliceParameters `json:"timeSlice" tf:"time_slice,omitempty"`
 }
@@ -435,6 +435,10 @@ type TimeSliceInitParameters struct {
 	// A timeseries query, containing named data-source-specific queries and a formula involving the named queries.
 	Query []TimeSliceQueryInitParameters `json:"query,omitempty" tf:"query,omitempty"`
 
+	// (Number) The interval used when querying data, which defines the size of a time slice. Valid values are 60, 300. Defaults to 300.
+	// The interval used when querying data, which defines the size of a time slice. Valid values are `60`, `300`. Defaults to `300`.
+	QueryIntervalSeconds *float64 `json:"queryIntervalSeconds,omitempty" tf:"query_interval_seconds,omitempty"`
+
 	// (Number) The threshold value to which each SLI value will be compared.
 	// The threshold value to which each SLI value will be compared.
 	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
@@ -449,6 +453,10 @@ type TimeSliceObservation struct {
 	// (Block List, Max: 1) The metric query of good / total events (see below for nested schema)
 	// A timeseries query, containing named data-source-specific queries and a formula involving the named queries.
 	Query []TimeSliceQueryObservation `json:"query,omitempty" tf:"query,omitempty"`
+
+	// (Number) The interval used when querying data, which defines the size of a time slice. Valid values are 60, 300. Defaults to 300.
+	// The interval used when querying data, which defines the size of a time slice. Valid values are `60`, `300`. Defaults to `300`.
+	QueryIntervalSeconds *float64 `json:"queryIntervalSeconds,omitempty" tf:"query_interval_seconds,omitempty"`
 
 	// (Number) The threshold value to which each SLI value will be compared.
 	// The threshold value to which each SLI value will be compared.
@@ -466,6 +474,11 @@ type TimeSliceParameters struct {
 	// A timeseries query, containing named data-source-specific queries and a formula involving the named queries.
 	// +kubebuilder:validation:Optional
 	Query []TimeSliceQueryParameters `json:"query" tf:"query,omitempty"`
+
+	// (Number) The interval used when querying data, which defines the size of a time slice. Valid values are 60, 300. Defaults to 300.
+	// The interval used when querying data, which defines the size of a time slice. Valid values are `60`, `300`. Defaults to `300`.
+	// +kubebuilder:validation:Optional
+	QueryIntervalSeconds *float64 `json:"queryIntervalSeconds,omitempty" tf:"query_interval_seconds,omitempty"`
 
 	// (Number) The threshold value to which each SLI value will be compared.
 	// The threshold value to which each SLI value will be compared.

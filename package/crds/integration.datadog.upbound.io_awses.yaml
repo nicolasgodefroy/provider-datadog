@@ -105,6 +105,13 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  extendedResourceCollectionEnabled:
+                    description: (String) Whether Datadog collects additional attributes
+                      and configuration information about the resources in your AWS
+                      account. Required for cspm_resource_collection_enabled. Whether
+                      Datadog collects additional attributes and configuration information
+                      about the resources in your AWS account. Required for `cspm_resource_collection_enabled`.
+                    type: string
                   filterTags:
                     description: type:c1.*,!region:us-east-1. Array of EC2 tags (in
                       the form `key:value`) defines a filter that Datadog uses when
@@ -130,9 +137,11 @@ spec:
                       AWS account. Whether Datadog collects metrics for this AWS account.
                     type: string
                   resourceCollectionEnabled:
-                    description: (String) Whether Datadog collects a standard set
-                      of resources from your AWS account. Whether Datadog collects
-                      a standard set of resources from your AWS account.
+                    description: (String, Deprecated) Whether Datadog collects a standard
+                      set of resources from your AWS account. Deprecated. Deprecated
+                      in favor of extended_resource_collection_enabled. Whether Datadog
+                      collects a standard set of resources from your AWS account.
+                      **Deprecated.** Deprecated in favor of `extended_resource_collection_enabled`.
                     type: string
                   roleName:
                     description: (String) Your Datadog role delegation name. Your
@@ -208,6 +217,13 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  extendedResourceCollectionEnabled:
+                    description: (String) Whether Datadog collects additional attributes
+                      and configuration information about the resources in your AWS
+                      account. Required for cspm_resource_collection_enabled. Whether
+                      Datadog collects additional attributes and configuration information
+                      about the resources in your AWS account. Required for `cspm_resource_collection_enabled`.
+                    type: string
                   filterTags:
                     description: type:c1.*,!region:us-east-1. Array of EC2 tags (in
                       the form `key:value`) defines a filter that Datadog uses when
@@ -233,9 +249,11 @@ spec:
                       AWS account. Whether Datadog collects metrics for this AWS account.
                     type: string
                   resourceCollectionEnabled:
-                    description: (String) Whether Datadog collects a standard set
-                      of resources from your AWS account. Whether Datadog collects
-                      a standard set of resources from your AWS account.
+                    description: (String, Deprecated) Whether Datadog collects a standard
+                      set of resources from your AWS account. Deprecated. Deprecated
+                      in favor of extended_resource_collection_enabled. Whether Datadog
+                      collects a standard set of resources from your AWS account.
+                      **Deprecated.** Deprecated in favor of `extended_resource_collection_enabled`.
                     type: string
                   roleName:
                     description: (String) Your Datadog role delegation name. Your
@@ -444,6 +462,13 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  extendedResourceCollectionEnabled:
+                    description: (String) Whether Datadog collects additional attributes
+                      and configuration information about the resources in your AWS
+                      account. Required for cspm_resource_collection_enabled. Whether
+                      Datadog collects additional attributes and configuration information
+                      about the resources in your AWS account. Required for `cspm_resource_collection_enabled`.
+                    type: string
                   externalId:
                     description: (String) AWS External ID. AWS External ID.
                     type: string
@@ -475,9 +500,11 @@ spec:
                       AWS account. Whether Datadog collects metrics for this AWS account.
                     type: string
                   resourceCollectionEnabled:
-                    description: (String) Whether Datadog collects a standard set
-                      of resources from your AWS account. Whether Datadog collects
-                      a standard set of resources from your AWS account.
+                    description: (String, Deprecated) Whether Datadog collects a standard
+                      set of resources from your AWS account. Deprecated. Deprecated
+                      in favor of extended_resource_collection_enabled. Whether Datadog
+                      collects a standard set of resources from your AWS account.
+                      **Deprecated.** Deprecated in favor of `extended_resource_collection_enabled`.
                     type: string
                   roleName:
                     description: (String) Your Datadog role delegation name. Your

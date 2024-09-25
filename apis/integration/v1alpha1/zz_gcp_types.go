@@ -31,13 +31,17 @@ type GCPInitParameters struct {
 	// Your ID found in your JSON service account key.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to false.
-	// Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to `false`.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled. Defaults to false.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled. Defaults to `false`.
 	CspmResourceCollectionEnabled *bool `json:"cspmResourceCollectionEnabled,omitempty" tf:"cspm_resource_collection_enabled,omitempty"`
 
-	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
-	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
+	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to "".
+	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to `""`.
 	HostFilters *string `json:"hostFilters,omitempty" tf:"host_filters,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
 
 	// (String) Your private key ID found in your JSON service account key.
 	// Your private key ID found in your JSON service account key.
@@ -46,6 +50,10 @@ type GCPInitParameters struct {
 	// (String) Your Google Cloud project ID found in your JSON service account key.
 	// Your Google Cloud project ID found in your JSON service account key.
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 type GCPObservation struct {
@@ -62,16 +70,20 @@ type GCPObservation struct {
 	// Your ID found in your JSON service account key.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to false.
-	// Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to `false`.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled. Defaults to false.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled. Defaults to `false`.
 	CspmResourceCollectionEnabled *bool `json:"cspmResourceCollectionEnabled,omitempty" tf:"cspm_resource_collection_enabled,omitempty"`
 
-	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
-	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
+	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to "".
+	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to `""`.
 	HostFilters *string `json:"hostFilters,omitempty" tf:"host_filters,omitempty"`
 
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
 
 	// (String) Your private key ID found in your JSON service account key.
 	// Your private key ID found in your JSON service account key.
@@ -80,6 +92,10 @@ type GCPObservation struct {
 	// (String) Your Google Cloud project ID found in your JSON service account key.
 	// Your Google Cloud project ID found in your JSON service account key.
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 type GCPParameters struct {
@@ -99,15 +115,20 @@ type GCPParameters struct {
 	// +kubebuilder:validation:Optional
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to false.
-	// Whether Datadog collects cloud security posture management resources from your GCP project. Defaults to `false`.
+	// (Boolean) Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires resource_collection_enabled to also be enabled. Defaults to false.
+	// Whether Datadog collects cloud security posture management resources from your GCP project. If enabled, requires `resource_collection_enabled` to also be enabled. Defaults to `false`.
 	// +kubebuilder:validation:Optional
 	CspmResourceCollectionEnabled *bool `json:"cspmResourceCollectionEnabled,omitempty" tf:"cspm_resource_collection_enabled,omitempty"`
 
-	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
-	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog.
+	// (String) Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to "".
+	// Limit the GCE instances that are pulled into Datadog by using tags. Only hosts that match one of the defined tags are imported into Datadog. Defaults to `""`.
 	// +kubebuilder:validation:Optional
 	HostFilters *string `json:"hostFilters,omitempty" tf:"host_filters,omitempty"`
+
+	// (Boolean) When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to false.
+	// When enabled, Datadog will attempt to collect Security Command Center Findings. Note: This requires additional permissions on the service account. Defaults to `false`.
+	// +kubebuilder:validation:Optional
+	IsSecurityCommandCenterEnabled *bool `json:"isSecurityCommandCenterEnabled,omitempty" tf:"is_security_command_center_enabled,omitempty"`
 
 	// (String) Your private key ID found in your JSON service account key.
 	// Your private key ID found in your JSON service account key.
@@ -123,6 +144,11 @@ type GCPParameters struct {
 	// Your Google Cloud project ID found in your JSON service account key.
 	// +kubebuilder:validation:Optional
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+
+	// (Boolean) When enabled, Datadog scans for all resources in your GCP environment.
+	// When enabled, Datadog scans for all resources in your GCP environment.
+	// +kubebuilder:validation:Optional
+	ResourceCollectionEnabled *bool `json:"resourceCollectionEnabled,omitempty" tf:"resource_collection_enabled,omitempty"`
 }
 
 // GCPSpec defines the desired state of GCP
@@ -152,7 +178,7 @@ type GCPStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// GCP is the Schema for the GCPs API. This resource is deprecated — use the datadog_integration_gcp_sts resource instead. Provides a Datadog - Google Cloud Platform integration resource. This can be used to create and manage Datadog - Google Cloud Platform integration.
+// GCP is the Schema for the GCPs API. This resource is deprecated—use the datadog_integration_gcp_sts resource instead. Provides a Datadog - Google Cloud Platform integration resource. This can be used to create and manage Datadog - Google Cloud Platform integration.
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

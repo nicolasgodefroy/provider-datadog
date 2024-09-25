@@ -69,7 +69,7 @@ type APIKeyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// APIKey is the Schema for the APIKeys API. Provides a Datadog API Key resource. This can be used to create and manage Datadog API Keys.
+// APIKey is the Schema for the APIKeys API. Provides a Datadog API Key resource. This can be used to create and manage Datadog API Keys. Import functionality for this resource is deprecated and will be removed in a future release with prior notice. Securely store your API keys using a secret management system or use this resource to create and manage new API keys.
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

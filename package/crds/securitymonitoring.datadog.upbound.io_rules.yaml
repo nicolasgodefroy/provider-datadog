@@ -105,10 +105,13 @@ spec:
                       true. Whether the rule is enabled. Defaults to `true`.
                     type: boolean
                   filter:
-                    description: (Block List) Additional queries to filter matched
-                      events before they are processed. (see below for nested schema)
-                      Additional queries to filter matched events before they are
-                      processed.
+                    description: '(Block List) Additional queries to filter matched
+                      events before they are processed. Note: This field is deprecated
+                      for log detection, signal correlation, and workload security
+                      rules. (see below for nested schema) Additional queries to filter
+                      matched events before they are processed. **Note**: This field
+                      is deprecated for log detection, signal correlation, and workload
+                      security rules.'
                     items:
                       properties:
                         action:
@@ -156,9 +159,10 @@ spec:
                         detectionMethod:
                           description: (String) The detection method. Valid values
                             are threshold, new_value, anomaly_detection, impossible_travel,
-                            hardcoded, third_party. Defaults to "threshold". The detection
-                            method. Valid values are `threshold`, `new_value`, `anomaly_detection`,
-                            `impossible_travel`, `hardcoded`, `third_party`. Defaults
+                            hardcoded, third_party, anomaly_threshold. Defaults to
+                            "threshold". The detection method. Valid values are `threshold`,
+                            `new_value`, `anomaly_detection`, `impossible_travel`,
+                            `hardcoded`, `third_party`, `anomaly_threshold`. Defaults
                             to `"threshold"`.
                           type: string
                         evaluationWindow:
@@ -483,6 +487,10 @@ spec:
                       `log_detection`, `workload_security`, `signal_correlation`.
                       Defaults to `"log_detection"`.
                     type: string
+                  validate:
+                    description: (Boolean) Whether or not to validate the Rule. Whether
+                      or not to validate the Rule.
+                    type: boolean
                 type: object
               initProvider:
                 description: THIS IS A BETA FIELD. It will be honored unless the Management
@@ -532,10 +540,13 @@ spec:
                       true. Whether the rule is enabled. Defaults to `true`.
                     type: boolean
                   filter:
-                    description: (Block List) Additional queries to filter matched
-                      events before they are processed. (see below for nested schema)
-                      Additional queries to filter matched events before they are
-                      processed.
+                    description: '(Block List) Additional queries to filter matched
+                      events before they are processed. Note: This field is deprecated
+                      for log detection, signal correlation, and workload security
+                      rules. (see below for nested schema) Additional queries to filter
+                      matched events before they are processed. **Note**: This field
+                      is deprecated for log detection, signal correlation, and workload
+                      security rules.'
                     items:
                       properties:
                         action:
@@ -583,9 +594,10 @@ spec:
                         detectionMethod:
                           description: (String) The detection method. Valid values
                             are threshold, new_value, anomaly_detection, impossible_travel,
-                            hardcoded, third_party. Defaults to "threshold". The detection
-                            method. Valid values are `threshold`, `new_value`, `anomaly_detection`,
-                            `impossible_travel`, `hardcoded`, `third_party`. Defaults
+                            hardcoded, third_party, anomaly_threshold. Defaults to
+                            "threshold". The detection method. Valid values are `threshold`,
+                            `new_value`, `anomaly_detection`, `impossible_travel`,
+                            `hardcoded`, `third_party`, `anomaly_threshold`. Defaults
                             to `"threshold"`.
                           type: string
                         evaluationWindow:
@@ -910,6 +922,10 @@ spec:
                       `log_detection`, `workload_security`, `signal_correlation`.
                       Defaults to `"log_detection"`.
                     type: string
+                  validate:
+                    description: (Boolean) Whether or not to validate the Rule. Whether
+                      or not to validate the Rule.
+                    type: boolean
                 type: object
               managementPolicies:
                 default:
@@ -1121,10 +1137,13 @@ spec:
                       true. Whether the rule is enabled. Defaults to `true`.
                     type: boolean
                   filter:
-                    description: (Block List) Additional queries to filter matched
-                      events before they are processed. (see below for nested schema)
-                      Additional queries to filter matched events before they are
-                      processed.
+                    description: '(Block List) Additional queries to filter matched
+                      events before they are processed. Note: This field is deprecated
+                      for log detection, signal correlation, and workload security
+                      rules. (see below for nested schema) Additional queries to filter
+                      matched events before they are processed. **Note**: This field
+                      is deprecated for log detection, signal correlation, and workload
+                      security rules.'
                     items:
                       properties:
                         action:
@@ -1175,9 +1194,10 @@ spec:
                         detectionMethod:
                           description: (String) The detection method. Valid values
                             are threshold, new_value, anomaly_detection, impossible_travel,
-                            hardcoded, third_party. Defaults to "threshold". The detection
-                            method. Valid values are `threshold`, `new_value`, `anomaly_detection`,
-                            `impossible_travel`, `hardcoded`, `third_party`. Defaults
+                            hardcoded, third_party, anomaly_threshold. Defaults to
+                            "threshold". The detection method. Valid values are `threshold`,
+                            `new_value`, `anomaly_detection`, `impossible_travel`,
+                            `hardcoded`, `third_party`, `anomaly_threshold`. Defaults
                             to `"threshold"`.
                           type: string
                         evaluationWindow:
@@ -1502,6 +1522,10 @@ spec:
                       `log_detection`, `workload_security`, `signal_correlation`.
                       Defaults to `"log_detection"`.
                     type: string
+                  validate:
+                    description: (Boolean) Whether or not to validate the Rule. Whether
+                      or not to validate the Rule.
+                    type: boolean
                 type: object
               conditions:
                 description: Conditions of the resource.

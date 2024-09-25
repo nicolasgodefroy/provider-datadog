@@ -69,7 +69,7 @@ type AppKeyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// AppKey is the Schema for the AppKeys API. Provides a Datadog Application Key resource. This can be used to create and manage Datadog Application Keys.
+// AppKey is the Schema for the AppKeys API. Provides a Datadog Application Key resource. This can be used to create and manage Datadog Application Keys. Import functionality for this resource is deprecated and will be removed in a future release with prior notice. Securely store your application keys using a secret management system or use this resource to create and manage new application keys.
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

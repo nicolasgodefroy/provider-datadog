@@ -176,8 +176,8 @@ type ParseTestOptionsInitParameters struct {
 	// (Block List, Max: 1) (see below for nested schema)
 	Parser []ParserInitParameters `json:"parser,omitempty" tf:"parser,omitempty"`
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
-	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `local_variable`.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
+	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `http_status_code`, `local_variable`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -194,8 +194,8 @@ type ParseTestOptionsObservation struct {
 	// (Block List, Max: 1) (see below for nested schema)
 	Parser []ParserObservation `json:"parser,omitempty" tf:"parser,omitempty"`
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
-	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `local_variable`.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
+	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `http_status_code`, `local_variable`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
@@ -215,15 +215,15 @@ type ParseTestOptionsParameters struct {
 	// +kubebuilder:validation:Optional
 	Parser []ParserParameters `json:"parser,omitempty" tf:"parser,omitempty"`
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
-	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `local_variable`.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
+	// Defines the source to use to extract the value. Valid values are `http_body`, `http_header`, `http_status_code`, `local_variable`.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
 }
 
 type ParserInitParameters struct {
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
 	// Type of parser to extract the value. Valid values are `raw`, `json_path`, `regex`, `x_path`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
@@ -234,7 +234,7 @@ type ParserInitParameters struct {
 
 type ParserObservation struct {
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
 	// Type of parser to extract the value. Valid values are `raw`, `json_path`, `regex`, `x_path`.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
@@ -245,7 +245,7 @@ type ParserObservation struct {
 
 type ParserParameters struct {
 
-	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, local_variable.
+	// (String) Defines the source to use to extract the value. Valid values are http_body, http_header, http_status_code, local_variable.
 	// Type of parser to extract the value. Valid values are `raw`, `json_path`, `regex`, `x_path`.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`

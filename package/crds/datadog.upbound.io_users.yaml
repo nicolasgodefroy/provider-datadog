@@ -79,8 +79,8 @@ spec:
                     description: (String) Name for user. Name for user.
                     type: string
                   roles:
-                    description: (Set of String) A list a role IDs to assign to the
-                      user. A list a role IDs to assign to the user.
+                    description: (Set of String) A list of role IDs to assign to the
+                      user. A list of role IDs to assign to the user.
                     items:
                       type: string
                     type: array
@@ -115,8 +115,8 @@ spec:
                     description: (String) Name for user. Name for user.
                     type: string
                   roles:
-                    description: (Set of String) A list a role IDs to assign to the
-                      user. A list a role IDs to assign to the user.
+                    description: (Set of String) A list of role IDs to assign to the
+                      user. A list of role IDs to assign to the user.
                     items:
                       type: string
                     type: array
@@ -312,8 +312,8 @@ spec:
                     description: (String) Name for user. Name for user.
                     type: string
                   roles:
-                    description: (Set of String) A list a role IDs to assign to the
-                      user. A list a role IDs to assign to the user.
+                    description: (Set of String) A list of role IDs to assign to the
+                      user. A list of role IDs to assign to the user.
                     items:
                       type: string
                     type: array

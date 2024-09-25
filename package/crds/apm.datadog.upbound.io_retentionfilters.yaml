@@ -78,8 +78,11 @@ spec:
                       indexed and stored.
                     properties:
                       query:
-                        description: following the span search syntax. Defaults to
-                          "*". The search query - following the span search syntax.
+                        description: follow the span search syntax, use AND between
+                          tags and \ to escape special characters, use nanosecond
+                          for duration. Defaults to "*". The search query - follow
+                          the span search syntax, use `AND` between tags and `\` to
+                          escape special characters, use nanosecond for duration.
                           Defaults to `"*"`.
                         type: string
                     type: object
@@ -124,8 +127,11 @@ spec:
                       indexed and stored.
                     properties:
                       query:
-                        description: following the span search syntax. Defaults to
-                          "*". The search query - following the span search syntax.
+                        description: follow the span search syntax, use AND between
+                          tags and \ to escape special characters, use nanosecond
+                          for duration. Defaults to "*". The search query - follow
+                          the span search syntax, use `AND` between tags and `\` to
+                          escape special characters, use nanosecond for duration.
                           Defaults to `"*"`.
                         type: string
                     type: object
@@ -340,8 +346,11 @@ spec:
                       indexed and stored.
                     properties:
                       query:
-                        description: following the span search syntax. Defaults to
-                          "*". The search query - following the span search syntax.
+                        description: follow the span search syntax, use AND between
+                          tags and \ to escape special characters, use nanosecond
+                          for duration. Defaults to "*". The search query - follow
+                          the span search syntax, use `AND` between tags and `\` to
+                          escape special characters, use nanosecond for duration.
                           Defaults to `"*"`.
                         type: string
                     type: object

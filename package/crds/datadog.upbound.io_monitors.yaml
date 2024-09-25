@@ -286,10 +286,10 @@ spec:
                       `resolve`, and `default`.'
                     type: string
                   priority:
-                    description: (Number) Integer from 1 (high) to 5 (low) indicating
+                    description: (String) Integer from 1 (high) to 5 (low) indicating
                       alert severity. Integer from 1 (high) to 5 (low) indicating
                       alert severity.
-                    type: number
+                    type: string
                   query:
                     description: "(String) The monitor query to notify on. Note this
                       is not the same query you see in the UI and the syntax is different
@@ -352,16 +352,16 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   schedulingOptions:
-                    description: (Block List) Configuration options for scheduling.
-                      (see below for nested schema) Configuration options for scheduling.
+                    description: '(Block List, Max: 1) Configuration options for scheduling.
+                      (see below for nested schema) Configuration options for scheduling.'
                     items:
                       properties:
                         customSchedule:
-                          description: (Block List) Configuration options for the
-                            custom schedules. If start is omitted, the monitor creation
-                            time will be used. (see below for nested schema) Configuration
-                            options for the custom schedules. If `start` is omitted,
-                            the monitor creation time will be used.
+                          description: '(Block List, Max: 1) Configuration options
+                            for the custom schedules. If start is omitted, the monitor
+                            creation time will be used. (see below for nested schema)
+                            Configuration options for the custom schedules. If `start`
+                            is omitted, the monitor creation time will be used.'
                           items:
                             properties:
                               recurrence:
@@ -392,13 +392,13 @@ spec:
                             type: object
                           type: array
                         evaluationWindow:
-                          description: (Block List) Configuration options for the
-                            evaluation window. If hour_starts is set, no other fields
-                            may be set. Otherwise, day_starts and month_starts must
-                            be set together. (see below for nested schema) Configuration
+                          description: '(Block List, Max: 1) Configuration options
+                            for the evaluation window. If hour_starts is set, no other
+                            fields may be set. Otherwise, day_starts and month_starts
+                            must be set together. (see below for nested schema) Configuration
                             options for the evaluation window. If `hour_starts` is
                             set, no other fields may be set. Otherwise, `day_starts`
-                            and `month_starts` must be set together.
+                            and `month_starts` must be set together.'
                           items:
                             properties:
                               dayStarts:
@@ -452,16 +452,17 @@ spec:
                   type:
                     description: 'analytics alert, slo alert, event-v2 alert, audit
                       alert, ci-pipelines alert, ci-tests alert, error-tracking alert,
-                      database-monitoring alert. The type of the monitor. The mapping
-                      from these types to the types found in the Datadog Web UI can
-                      be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
+                      database-monitoring alert, network-performance alert. The type
+                      of the monitor. The mapping from these types to the types found
+                      in the Datadog Web UI can be found in the Datadog API [documentation
+                      page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
                       Note: The monitor type cannot be changed after a monitor is
                       created. Valid values are `composite`, `event alert`, `log alert`,
                       `metric alert`, `process alert`, `query alert`, `rum alert`,
                       `service check`, `synthetics alert`, `trace-analytics alert`,
                       `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines
                       alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring
-                      alert`.'
+                      alert`, `network-performance alert`.'
                     type: string
                   validate:
                     description: (Boolean) If set to false, skip the validation call
@@ -506,10 +507,10 @@ spec:
                               dataSource:
                                 description: based queries. Valid values are rum,
                                   ci_pipelines, ci_tests, audit, events, logs, spans,
-                                  database_queries. The data source for event platform-based
-                                  queries. Valid values are `rum`, `ci_pipelines`,
-                                  `ci_tests`, `audit`, `events`, `logs`, `spans`,
-                                  `database_queries`.
+                                  database_queries, network. The data source for event
+                                  platform-based queries. Valid values are `rum`,
+                                  `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`,
+                                  `spans`, `database_queries`, `network`.
                                 type: string
                               groupBy:
                                 description: (Block List) Group by options. (see below
@@ -818,10 +819,10 @@ spec:
                       `resolve`, and `default`.'
                     type: string
                   priority:
-                    description: (Number) Integer from 1 (high) to 5 (low) indicating
+                    description: (String) Integer from 1 (high) to 5 (low) indicating
                       alert severity. Integer from 1 (high) to 5 (low) indicating
                       alert severity.
-                    type: number
+                    type: string
                   query:
                     description: "(String) The monitor query to notify on. Note this
                       is not the same query you see in the UI and the syntax is different
@@ -884,16 +885,16 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   schedulingOptions:
-                    description: (Block List) Configuration options for scheduling.
-                      (see below for nested schema) Configuration options for scheduling.
+                    description: '(Block List, Max: 1) Configuration options for scheduling.
+                      (see below for nested schema) Configuration options for scheduling.'
                     items:
                       properties:
                         customSchedule:
-                          description: (Block List) Configuration options for the
-                            custom schedules. If start is omitted, the monitor creation
-                            time will be used. (see below for nested schema) Configuration
-                            options for the custom schedules. If `start` is omitted,
-                            the monitor creation time will be used.
+                          description: '(Block List, Max: 1) Configuration options
+                            for the custom schedules. If start is omitted, the monitor
+                            creation time will be used. (see below for nested schema)
+                            Configuration options for the custom schedules. If `start`
+                            is omitted, the monitor creation time will be used.'
                           items:
                             properties:
                               recurrence:
@@ -924,13 +925,13 @@ spec:
                             type: object
                           type: array
                         evaluationWindow:
-                          description: (Block List) Configuration options for the
-                            evaluation window. If hour_starts is set, no other fields
-                            may be set. Otherwise, day_starts and month_starts must
-                            be set together. (see below for nested schema) Configuration
+                          description: '(Block List, Max: 1) Configuration options
+                            for the evaluation window. If hour_starts is set, no other
+                            fields may be set. Otherwise, day_starts and month_starts
+                            must be set together. (see below for nested schema) Configuration
                             options for the evaluation window. If `hour_starts` is
                             set, no other fields may be set. Otherwise, `day_starts`
-                            and `month_starts` must be set together.
+                            and `month_starts` must be set together.'
                           items:
                             properties:
                               dayStarts:
@@ -984,16 +985,17 @@ spec:
                   type:
                     description: 'analytics alert, slo alert, event-v2 alert, audit
                       alert, ci-pipelines alert, ci-tests alert, error-tracking alert,
-                      database-monitoring alert. The type of the monitor. The mapping
-                      from these types to the types found in the Datadog Web UI can
-                      be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
+                      database-monitoring alert, network-performance alert. The type
+                      of the monitor. The mapping from these types to the types found
+                      in the Datadog Web UI can be found in the Datadog API [documentation
+                      page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
                       Note: The monitor type cannot be changed after a monitor is
                       created. Valid values are `composite`, `event alert`, `log alert`,
                       `metric alert`, `process alert`, `query alert`, `rum alert`,
                       `service check`, `synthetics alert`, `trace-analytics alert`,
                       `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines
                       alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring
-                      alert`.'
+                      alert`, `network-performance alert`.'
                     type: string
                   validate:
                     description: (Boolean) If set to false, skip the validation call
@@ -1038,10 +1040,10 @@ spec:
                               dataSource:
                                 description: based queries. Valid values are rum,
                                   ci_pipelines, ci_tests, audit, events, logs, spans,
-                                  database_queries. The data source for event platform-based
-                                  queries. Valid values are `rum`, `ci_pipelines`,
-                                  `ci_tests`, `audit`, `events`, `logs`, `spans`,
-                                  `database_queries`.
+                                  database_queries, network. The data source for event
+                                  platform-based queries. Valid values are `rum`,
+                                  `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`,
+                                  `spans`, `database_queries`, `network`.
                                 type: string
                               groupBy:
                                 description: (Block List) Group by options. (see below
@@ -1530,10 +1532,10 @@ spec:
                       `resolve`, and `default`.'
                     type: string
                   priority:
-                    description: (Number) Integer from 1 (high) to 5 (low) indicating
+                    description: (String) Integer from 1 (high) to 5 (low) indicating
                       alert severity. Integer from 1 (high) to 5 (low) indicating
                       alert severity.
-                    type: number
+                    type: string
                   query:
                     description: "(String) The monitor query to notify on. Note this
                       is not the same query you see in the UI and the syntax is different
@@ -1596,16 +1598,16 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   schedulingOptions:
-                    description: (Block List) Configuration options for scheduling.
-                      (see below for nested schema) Configuration options for scheduling.
+                    description: '(Block List, Max: 1) Configuration options for scheduling.
+                      (see below for nested schema) Configuration options for scheduling.'
                     items:
                       properties:
                         customSchedule:
-                          description: (Block List) Configuration options for the
-                            custom schedules. If start is omitted, the monitor creation
-                            time will be used. (see below for nested schema) Configuration
-                            options for the custom schedules. If `start` is omitted,
-                            the monitor creation time will be used.
+                          description: '(Block List, Max: 1) Configuration options
+                            for the custom schedules. If start is omitted, the monitor
+                            creation time will be used. (see below for nested schema)
+                            Configuration options for the custom schedules. If `start`
+                            is omitted, the monitor creation time will be used.'
                           items:
                             properties:
                               recurrence:
@@ -1636,13 +1638,13 @@ spec:
                             type: object
                           type: array
                         evaluationWindow:
-                          description: (Block List) Configuration options for the
-                            evaluation window. If hour_starts is set, no other fields
-                            may be set. Otherwise, day_starts and month_starts must
-                            be set together. (see below for nested schema) Configuration
+                          description: '(Block List, Max: 1) Configuration options
+                            for the evaluation window. If hour_starts is set, no other
+                            fields may be set. Otherwise, day_starts and month_starts
+                            must be set together. (see below for nested schema) Configuration
                             options for the evaluation window. If `hour_starts` is
                             set, no other fields may be set. Otherwise, `day_starts`
-                            and `month_starts` must be set together.
+                            and `month_starts` must be set together.'
                           items:
                             properties:
                               dayStarts:
@@ -1696,16 +1698,17 @@ spec:
                   type:
                     description: 'analytics alert, slo alert, event-v2 alert, audit
                       alert, ci-pipelines alert, ci-tests alert, error-tracking alert,
-                      database-monitoring alert. The type of the monitor. The mapping
-                      from these types to the types found in the Datadog Web UI can
-                      be found in the Datadog API [documentation page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
+                      database-monitoring alert, network-performance alert. The type
+                      of the monitor. The mapping from these types to the types found
+                      in the Datadog Web UI can be found in the Datadog API [documentation
+                      page](https://docs.datadoghq.com/api/v1/monitors/#create-a-monitor).
                       Note: The monitor type cannot be changed after a monitor is
                       created. Valid values are `composite`, `event alert`, `log alert`,
                       `metric alert`, `process alert`, `query alert`, `rum alert`,
                       `service check`, `synthetics alert`, `trace-analytics alert`,
                       `slo alert`, `event-v2 alert`, `audit alert`, `ci-pipelines
                       alert`, `ci-tests alert`, `error-tracking alert`, `database-monitoring
-                      alert`.'
+                      alert`, `network-performance alert`.'
                     type: string
                   validate:
                     description: (Boolean) If set to false, skip the validation call
@@ -1750,10 +1753,10 @@ spec:
                               dataSource:
                                 description: based queries. Valid values are rum,
                                   ci_pipelines, ci_tests, audit, events, logs, spans,
-                                  database_queries. The data source for event platform-based
-                                  queries. Valid values are `rum`, `ci_pipelines`,
-                                  `ci_tests`, `audit`, `events`, `logs`, `spans`,
-                                  `database_queries`.
+                                  database_queries, network. The data source for event
+                                  platform-based queries. Valid values are `rum`,
+                                  `ci_pipelines`, `ci_tests`, `audit`, `events`, `logs`,
+                                  `spans`, `database_queries`, `network`.
                                 type: string
                               groupBy:
                                 description: (Block List) Group by options. (see below

@@ -34,10 +34,10 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: GCP is the Schema for the GCPs API. This resource is deprecated
-          — use the datadog_integration_gcp_sts resource instead. Provides a Datadog
-          - Google Cloud Platform integration resource. This can be used to create
-          and manage Datadog - Google Cloud Platform integration.
+        description: GCP is the Schema for the GCPs API. This resource is deprecated—use
+          the datadog_integration_gcp_sts resource instead. Provides a Datadog - Google
+          Cloud Platform integration resource. This can be used to create and manage
+          Datadog - Google Cloud Platform integration.
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -84,17 +84,28 @@ spec:
                     type: string
                   cspmResourceCollectionEnabled:
                     description: (Boolean) Whether Datadog collects cloud security
-                      posture management resources from your GCP project. Defaults
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Defaults
                       to false. Whether Datadog collects cloud security posture management
-                      resources from your GCP project. Defaults to `false`.
+                      resources from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled. Defaults to `false`.
                     type: boolean
                   hostFilters:
                     description: (String) Limit the GCE instances that are pulled
                       into Datadog by using tags. Only hosts that match one of the
-                      defined tags are imported into Datadog. Limit the GCE instances
-                      that are pulled into Datadog by using tags. Only hosts that
-                      match one of the defined tags are imported into Datadog.
+                      defined tags are imported into Datadog. Defaults to "". Limit
+                      the GCE instances that are pulled into Datadog by using tags.
+                      Only hosts that match one of the defined tags are imported into
+                      Datadog. Defaults to `""`.
                     type: string
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
                   privateKeyId:
                     description: (String) Your private key ID found in your JSON service
                       account key. Your private key ID found in your JSON service
@@ -124,6 +135,11 @@ spec:
                       JSON service account key. Your Google Cloud project ID found
                       in your JSON service account key.
                     type: string
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
+                    type: boolean
                 type: object
               initProvider:
                 description: THIS IS A BETA FIELD. It will be honored unless the Management
@@ -152,17 +168,28 @@ spec:
                     type: string
                   cspmResourceCollectionEnabled:
                     description: (Boolean) Whether Datadog collects cloud security
-                      posture management resources from your GCP project. Defaults
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Defaults
                       to false. Whether Datadog collects cloud security posture management
-                      resources from your GCP project. Defaults to `false`.
+                      resources from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled. Defaults to `false`.
                     type: boolean
                   hostFilters:
                     description: (String) Limit the GCE instances that are pulled
                       into Datadog by using tags. Only hosts that match one of the
-                      defined tags are imported into Datadog. Limit the GCE instances
-                      that are pulled into Datadog by using tags. Only hosts that
-                      match one of the defined tags are imported into Datadog.
+                      defined tags are imported into Datadog. Defaults to "". Limit
+                      the GCE instances that are pulled into Datadog by using tags.
+                      Only hosts that match one of the defined tags are imported into
+                      Datadog. Defaults to `""`.
                     type: string
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
                   privateKeyId:
                     description: (String) Your private key ID found in your JSON service
                       account key. Your private key ID found in your JSON service
@@ -173,6 +200,11 @@ spec:
                       JSON service account key. Your Google Cloud project ID found
                       in your JSON service account key.
                     type: string
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
+                    type: boolean
                 type: object
               managementPolicies:
                 default:
@@ -374,20 +406,31 @@ spec:
                     type: string
                   cspmResourceCollectionEnabled:
                     description: (Boolean) Whether Datadog collects cloud security
-                      posture management resources from your GCP project. Defaults
+                      posture management resources from your GCP project. If enabled,
+                      requires resource_collection_enabled to also be enabled. Defaults
                       to false. Whether Datadog collects cloud security posture management
-                      resources from your GCP project. Defaults to `false`.
+                      resources from your GCP project. If enabled, requires `resource_collection_enabled`
+                      to also be enabled. Defaults to `false`.
                     type: boolean
                   hostFilters:
                     description: (String) Limit the GCE instances that are pulled
                       into Datadog by using tags. Only hosts that match one of the
-                      defined tags are imported into Datadog. Limit the GCE instances
-                      that are pulled into Datadog by using tags. Only hosts that
-                      match one of the defined tags are imported into Datadog.
+                      defined tags are imported into Datadog. Defaults to "". Limit
+                      the GCE instances that are pulled into Datadog by using tags.
+                      Only hosts that match one of the defined tags are imported into
+                      Datadog. Defaults to `""`.
                     type: string
                   id:
                     description: (String) The ID of this resource.
                     type: string
+                  isSecurityCommandCenterEnabled:
+                    description: '(Boolean) When enabled, Datadog will attempt to
+                      collect Security Command Center Findings. Note: This requires
+                      additional permissions on the service account. Defaults to false.
+                      When enabled, Datadog will attempt to collect Security Command
+                      Center Findings. Note: This requires additional permissions
+                      on the service account. Defaults to `false`.'
+                    type: boolean
                   privateKeyId:
                     description: (String) Your private key ID found in your JSON service
                       account key. Your private key ID found in your JSON service
@@ -398,6 +441,11 @@ spec:
                       JSON service account key. Your Google Cloud project ID found
                       in your JSON service account key.
                     type: string
+                  resourceCollectionEnabled:
+                    description: (Boolean) When enabled, Datadog scans for all resources
+                      in your GCP environment. When enabled, Datadog scans for all
+                      resources in your GCP environment.
+                    type: boolean
                 type: object
               conditions:
                 description: Conditions of the resource.

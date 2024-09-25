@@ -123,10 +123,12 @@ spec:
                         timeSlice:
                           description: '(Block List, Min: 1, Max: 1) The time slice
                             condition, composed of 3 parts: 1. The timeseries query,
-                            2. The comparator, and 3. The threshold. (see below for
-                            nested schema) The time slice condition, composed of 3
-                            parts: 1. The timeseries query, 2. The comparator, and
-                            3. The threshold.'
+                            2. The comparator, and 3. The threshold. Optionally, a
+                            fourth part, the query interval, can be provided. (see
+                            below for nested schema) The time slice condition, composed
+                            of 3 parts: 1. The timeseries query, 2. The comparator,
+                            and 3. The threshold. Optionally, a fourth part, the query
+                            interval, can be provided.'
                           items:
                             properties:
                               comparator:
@@ -196,6 +198,14 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              queryIntervalSeconds:
+                                description: (Number) The interval used when querying
+                                  data, which defines the size of a time slice. Valid
+                                  values are 60, 300. Defaults to 300. The interval
+                                  used when querying data, which defines the size
+                                  of a time slice. Valid values are `60`, `300`. Defaults
+                                  to `300`.
+                                type: number
                               threshold:
                                 description: (Number) The threshold value to which
                                   each SLI value will be compared. The threshold value
@@ -274,8 +284,10 @@ spec:
                       Valid values are `metric`, `monitor`, `time_slice`.
                     type: string
                   validate:
-                    description: (Boolean) Whether or not to validate the SLO. Whether
-                      or not to validate the SLO.
+                    description: (Boolean) Whether or not to validate the SLO. It
+                      checks if monitors added to a monitor SLO already exist. Whether
+                      or not to validate the SLO. It checks if monitors added to a
+                      monitor SLO already exist.
                     type: boolean
                   warningThreshold:
                     description: (Number) The objective's warning value in (0,100).
@@ -352,10 +364,12 @@ spec:
                         timeSlice:
                           description: '(Block List, Min: 1, Max: 1) The time slice
                             condition, composed of 3 parts: 1. The timeseries query,
-                            2. The comparator, and 3. The threshold. (see below for
-                            nested schema) The time slice condition, composed of 3
-                            parts: 1. The timeseries query, 2. The comparator, and
-                            3. The threshold.'
+                            2. The comparator, and 3. The threshold. Optionally, a
+                            fourth part, the query interval, can be provided. (see
+                            below for nested schema) The time slice condition, composed
+                            of 3 parts: 1. The timeseries query, 2. The comparator,
+                            and 3. The threshold. Optionally, a fourth part, the query
+                            interval, can be provided.'
                           items:
                             properties:
                               comparator:
@@ -425,6 +439,14 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              queryIntervalSeconds:
+                                description: (Number) The interval used when querying
+                                  data, which defines the size of a time slice. Valid
+                                  values are 60, 300. Defaults to 300. The interval
+                                  used when querying data, which defines the size
+                                  of a time slice. Valid values are `60`, `300`. Defaults
+                                  to `300`.
+                                type: number
                               threshold:
                                 description: (Number) The threshold value to which
                                   each SLI value will be compared. The threshold value
@@ -503,8 +525,10 @@ spec:
                       Valid values are `metric`, `monitor`, `time_slice`.
                     type: string
                   validate:
-                    description: (Boolean) Whether or not to validate the SLO. Whether
-                      or not to validate the SLO.
+                    description: (Boolean) Whether or not to validate the SLO. It
+                      checks if monitors added to a monitor SLO already exist. Whether
+                      or not to validate the SLO. It checks if monitors added to a
+                      monitor SLO already exist.
                     type: boolean
                   warningThreshold:
                     description: (Number) The objective's warning value in (0,100).
@@ -751,10 +775,12 @@ spec:
                         timeSlice:
                           description: '(Block List, Min: 1, Max: 1) The time slice
                             condition, composed of 3 parts: 1. The timeseries query,
-                            2. The comparator, and 3. The threshold. (see below for
-                            nested schema) The time slice condition, composed of 3
-                            parts: 1. The timeseries query, 2. The comparator, and
-                            3. The threshold.'
+                            2. The comparator, and 3. The threshold. Optionally, a
+                            fourth part, the query interval, can be provided. (see
+                            below for nested schema) The time slice condition, composed
+                            of 3 parts: 1. The timeseries query, 2. The comparator,
+                            and 3. The threshold. Optionally, a fourth part, the query
+                            interval, can be provided.'
                           items:
                             properties:
                               comparator:
@@ -824,6 +850,14 @@ spec:
                                       type: array
                                   type: object
                                 type: array
+                              queryIntervalSeconds:
+                                description: (Number) The interval used when querying
+                                  data, which defines the size of a time slice. Valid
+                                  values are 60, 300. Defaults to 300. The interval
+                                  used when querying data, which defines the size
+                                  of a time slice. Valid values are `60`, `300`. Defaults
+                                  to `300`.
+                                type: number
                               threshold:
                                 description: (Number) The threshold value to which
                                   each SLI value will be compared. The threshold value
@@ -916,8 +950,10 @@ spec:
                       Valid values are `metric`, `monitor`, `time_slice`.
                     type: string
                   validate:
-                    description: (Boolean) Whether or not to validate the SLO. Whether
-                      or not to validate the SLO.
+                    description: (Boolean) Whether or not to validate the SLO. It
+                      checks if monitors added to a monitor SLO already exist. Whether
+                      or not to validate the SLO. It checks if monitors added to a
+                      monitor SLO already exist.
                     type: boolean
                   warningThreshold:
                     description: (Number) The objective's warning value in (0,100).

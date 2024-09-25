@@ -430,6 +430,11 @@ func (in *AuthnMappingInitParameters) DeepCopyInto(out *AuthnMappingInitParamete
 		*out = new(string)
 		**out = **in
 	}
+	if in.Team != nil {
+		in, out := &in.Team, &out.Team
+		*out = new(string)
+		**out = **in
+	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
 		*out = new(string)
@@ -497,6 +502,11 @@ func (in *AuthnMappingObservation) DeepCopyInto(out *AuthnMappingObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Team != nil {
+		in, out := &in.Team, &out.Team
+		*out = new(string)
+		**out = **in
+	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
 		*out = new(string)
@@ -524,6 +534,11 @@ func (in *AuthnMappingParameters) DeepCopyInto(out *AuthnMappingParameters) {
 	}
 	if in.Role != nil {
 		in, out := &in.Role, &out.Role
+		*out = new(string)
+		**out = **in
+	}
+	if in.Team != nil {
+		in, out := &in.Team, &out.Team
 		*out = new(string)
 		**out = **in
 	}
@@ -3666,7 +3681,7 @@ func (in *MonitorInitParameters) DeepCopyInto(out *MonitorInitParameters) {
 	}
 	if in.Priority != nil {
 		in, out := &in.Priority, &out.Priority
-		*out = new(float64)
+		*out = new(string)
 		**out = **in
 	}
 	if in.Query != nil {
@@ -4094,7 +4109,7 @@ func (in *MonitorObservation) DeepCopyInto(out *MonitorObservation) {
 	}
 	if in.Priority != nil {
 		in, out := &in.Priority, &out.Priority
-		*out = new(float64)
+		*out = new(string)
 		**out = **in
 	}
 	if in.Query != nil {
@@ -4306,7 +4321,7 @@ func (in *MonitorParameters) DeepCopyInto(out *MonitorParameters) {
 	}
 	if in.Priority != nil {
 		in, out := &in.Priority, &out.Priority
-		*out = new(float64)
+		*out = new(string)
 		**out = **in
 	}
 	if in.Query != nil {
@@ -4758,6 +4773,17 @@ func (in *OrganizationSettingsInitParameters) DeepCopyInto(out *OrganizationSett
 		*out = new(string)
 		**out = **in
 	}
+	if in.SecurityContacts != nil {
+		in, out := &in.SecurityContacts, &out.SecurityContacts
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
+	}
 	if in.Settings != nil {
 		in, out := &in.Settings, &out.Settings
 		*out = make([]OrganizationSettingsSettingsInitParameters, len(*in))
@@ -4832,6 +4858,17 @@ func (in *OrganizationSettingsObservation) DeepCopyInto(out *OrganizationSetting
 		*out = new(string)
 		**out = **in
 	}
+	if in.SecurityContacts != nil {
+		in, out := &in.SecurityContacts, &out.SecurityContacts
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
+	}
 	if in.Settings != nil {
 		in, out := &in.Settings, &out.Settings
 		*out = make([]OrganizationSettingsSettingsObservation, len(*in))
@@ -4858,6 +4895,17 @@ func (in *OrganizationSettingsParameters) DeepCopyInto(out *OrganizationSettings
 		in, out := &in.Name, &out.Name
 		*out = new(string)
 		**out = **in
+	}
+	if in.SecurityContacts != nil {
+		in, out := &in.SecurityContacts, &out.SecurityContacts
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
 	}
 	if in.Settings != nil {
 		in, out := &in.Settings, &out.Settings
@@ -10087,6 +10135,11 @@ func (in *TimeSliceInitParameters) DeepCopyInto(out *TimeSliceInitParameters) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.QueryIntervalSeconds != nil {
+		in, out := &in.QueryIntervalSeconds, &out.QueryIntervalSeconds
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Threshold != nil {
 		in, out := &in.Threshold, &out.Threshold
 		*out = new(float64)
@@ -10119,6 +10172,11 @@ func (in *TimeSliceObservation) DeepCopyInto(out *TimeSliceObservation) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.QueryIntervalSeconds != nil {
+		in, out := &in.QueryIntervalSeconds, &out.QueryIntervalSeconds
+		*out = new(float64)
+		**out = **in
+	}
 	if in.Threshold != nil {
 		in, out := &in.Threshold, &out.Threshold
 		*out = new(float64)
@@ -10150,6 +10208,11 @@ func (in *TimeSliceParameters) DeepCopyInto(out *TimeSliceParameters) {
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.QueryIntervalSeconds != nil {
+		in, out := &in.QueryIntervalSeconds, &out.QueryIntervalSeconds
+		*out = new(float64)
+		**out = **in
 	}
 	if in.Threshold != nil {
 		in, out := &in.Threshold, &out.Threshold

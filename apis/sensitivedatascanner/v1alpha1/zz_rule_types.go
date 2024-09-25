@@ -86,6 +86,10 @@ type RuleInitParameters struct {
 	// Not included if there is a relationship to a standard pattern.
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
 
+	// (Number) Priority level of the rule . Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	// Priority level of the rule (optional). Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+
 	// (String) Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.
 	// Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.
 	StandardPatternID *string `json:"standardPatternId,omitempty" tf:"standard_pattern_id,omitempty"`
@@ -135,6 +139,10 @@ type RuleObservation struct {
 	// (String) Not included if there is a relationship to a standard pattern.
 	// Not included if there is a relationship to a standard pattern.
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
+
+	// (Number) Priority level of the rule . Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	// Priority level of the rule (optional). Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (String) Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.
 	// Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.
@@ -190,6 +198,11 @@ type RuleParameters struct {
 	// Not included if there is a relationship to a standard pattern.
 	// +kubebuilder:validation:Optional
 	Pattern *string `json:"pattern,omitempty" tf:"pattern,omitempty"`
+
+	// (Number) Priority level of the rule . Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	// Priority level of the rule (optional). Used to order sensitive data discovered in the sds summary page. It must be between 1 and 5 (1 being the most important).
+	// +kubebuilder:validation:Optional
+	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (String) Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.
 	// Id of the standard pattern the rule refers to. If provided, then pattern must not be provided.

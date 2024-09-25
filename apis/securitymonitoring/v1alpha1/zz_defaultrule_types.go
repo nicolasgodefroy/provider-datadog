@@ -58,6 +58,11 @@ type DefaultRuleInitParameters struct {
 	// Cases of the rule, this is used to update notifications.
 	Case []CaseInitParameters `json:"case,omitempty" tf:"case,omitempty"`
 
+	// (Set of String) Custom tags for generated signals.
+	// Custom tags for generated signals.
+	// +listType=set
+	CustomTags []*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
+
 	// (Boolean) Enable the rule. Defaults to true.
 	// Enable the rule. Defaults to `true`.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
@@ -76,6 +81,11 @@ type DefaultRuleObservation struct {
 	// (Block List, Max: 10) Cases of the rule, this is used to update notifications. (see below for nested schema)
 	// Cases of the rule, this is used to update notifications.
 	Case []CaseObservation `json:"case,omitempty" tf:"case,omitempty"`
+
+	// (Set of String) Custom tags for generated signals.
+	// Custom tags for generated signals.
+	// +listType=set
+	CustomTags []*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
 	// (Boolean) Enable the rule. Defaults to true.
 	// Enable the rule. Defaults to `true`.
@@ -103,6 +113,12 @@ type DefaultRuleParameters struct {
 	// Cases of the rule, this is used to update notifications.
 	// +kubebuilder:validation:Optional
 	Case []CaseParameters `json:"case,omitempty" tf:"case,omitempty"`
+
+	// (Set of String) Custom tags for generated signals.
+	// Custom tags for generated signals.
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	CustomTags []*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
 	// (Boolean) Enable the rule. Defaults to true.
 	// Enable the rule. Defaults to `true`.

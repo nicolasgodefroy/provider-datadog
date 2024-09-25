@@ -8,10 +8,10 @@ export TERRAFORM_VERSION ?= 1.5.5
 
 export TERRAFORM_PROVIDER_SOURCE ?= DataDog/datadog
 export TERRAFORM_PROVIDER_REPO ?= https://github.com/DataDog/terraform-provider-datadog
-export TERRAFORM_PROVIDER_VERSION ?= 3.37.0
+export TERRAFORM_PROVIDER_VERSION ?= 3.44.1
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME ?= terraform-provider-datadog
 export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX ?= https://releases.hashicorp.com/$(TERRAFORM_PROVIDER_DOWNLOAD_NAME)/$(TERRAFORM_PROVIDER_VERSION)
-export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-datadog_v3.37.0
+export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-datadog_v3.44.1
 export TERRAFORM_DOCS_PATH ?= docs/resources
 
 PLATFORMS ?= linux_amd64 linux_arm64
@@ -50,7 +50,7 @@ GO_SUBDIRS += cmd internal apis
 # Setup Kubernetes tools
 
 KIND_VERSION = v0.20.0
-UP_VERSION = v0.22.1
+UP_VERSION = v0.33.0
 UP_CHANNEL = stable
 UPTEST_VERSION = v0.10.0
 -include build/makelib/k8s_tools.mk
